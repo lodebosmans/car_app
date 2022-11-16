@@ -2,11 +2,15 @@ var World = {
     loaded: false,
     
     init: function initFn() {
-        this.createOverlays("Nesquick");
-        this.createOverlays("leo");
+        this.createOverlays("audi", 30, 230, 139, 1, 1); // Audi => done
+        this.createOverlays("volkswagen", 45, 150, 150, 3, 3); // VW => done
+        this.createOverlays("ferarri", 30, 197, 259, 2, 2); // Ferarri => done
+        this.createOverlays("lamborghini", 24, 200, 173, 2, 2); // Lambo 2 26-75 and even skipped => done
+        this.createOverlays("tesla", 30, 204, 276, 2, 2); // Tesla => done
+        this.createOverlays("traktor", 10, 150, 112, 1.5, 1.5); // Traktor => done
     },
 
-    createOverlays: function createOverlaysFn(targetname) {
+    createOverlays: function createOverlaysFn(targetname, nrOfFrames, width, height, scaleX, scaleY) {
         // Use christmas.wto to recognize the chirstmas figures
         this.targetCollectionResource = new AR.TargetCollectionResource("assets/" + targetname + ".wto", {
             onError: World.onError
@@ -21,12 +25,12 @@ var World = {
         // **  car Animation ** //
         // ********************* //
         // Read the sprite sheet
-        var imgCar = new AR.ImageResource("assets/car.png", {
+        var imgCar = new AR.ImageResource("assets/" + targetname + ".png", {
             onError: World.onError
         });
         // 1.0 is the height of Gingy, start with 1 and experiment with value until the figure has the right size
         // 500 (width), 500 (height) of one frame 
-        var overlayCar = new AR.AnimatedImageDrawable(imgCar, 1.0, 600, 600, {
+        var overlayCar = new AR.AnimatedImageDrawable(imgCar, 1.0, width, height, {
             // Use x and y to position the figure on the target object (start with 0,0 and experiment)
             // You may also need to rotate about one of the three axes, but wait and see how the figure appears. 
             // If you must rotate, do so before you begin the translation, because rotating the figure also 
@@ -34,7 +38,7 @@ var World = {
             translate: {
                 x: 0.00,
                 y: 0.0
-            }
+            },
             /* no rotation needed for Gingy
             ,
             rotate: {
@@ -42,15 +46,20 @@ var World = {
                 z: 170
             }
             */
+            scale: {
+                x: scaleX,
+                y: scaleY
+            }
+            
         });
 
         // Push the correct number of frames into a frames array
         framesCar = [];
-        for (i = 0; i< 8; i++) {
+        for (i = 0; i< nrOfFrames; i++) {
             framesCar.push(i);
         }
         // Play those frames, with a pause of 80 (milliseconds?), repeat (-1)
-        overlayCar.animate(framesCar, 200, -1);
+        overlayCar.animate(framesCar, 100, -1);
 
 
         // Show Gingy when "boom" (name of the target object in the .wto file) is recognized

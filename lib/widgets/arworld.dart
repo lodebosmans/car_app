@@ -102,14 +102,7 @@ class _ARWorldWidgetState extends State<ARWorldWidget>
   void onJSONObjectReceived(
       Map<String, dynamic> jsonObject, userName, carList) async {
     var resultobject = ARImageResponse.fromJson(jsonObject);
-    String carBrand;
-    if (resultobject.objectScanned == 'leo') {
-      carBrand = 'ferarri';
-    } else if (resultobject.objectScanned == 'Nesquick') {
-      carBrand = "tesla";
-    } else {
-      carBrand = 'none';
-    }
+    String carBrand = resultobject.objectScanned;
 
     bool carAlreadyScanned = false;
     for (int i = 0; i < carList.length; i++) {
@@ -122,16 +115,6 @@ class _ARWorldWidgetState extends State<ARWorldWidget>
       CarApi.updateRating(userName, carBrand, 0);
     }
 
-    //get question and navigate to question/answer page
-    // QuestionsApi.fetchQuestionByImageName(imageScanned.imageScanned)
-    //     .then((result) {
-    //   if (result != null) {
-    //     Navigator.push(
-    //       context,
-    //       MaterialPageRoute(builder: (context) => QuestionPage(id: result.id)),
-    //     );
-    //   }
-    // });
   }
 
   Future<void> onLoadSuccess() async {

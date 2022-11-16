@@ -54,7 +54,7 @@ class _RatingPageState extends State<RatingPage> {
             children: [
               image = Image(
                 //get the accompanying photo
-                image: AssetImage('assets/$i.jpg'),
+                image: AssetImage('assets/$i.png'),
                 width: 315,
                 height: 110,
               ),

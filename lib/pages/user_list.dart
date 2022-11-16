@@ -137,7 +137,7 @@ class PersonalCarListState extends State<PersonalCarList> {
               child: Column(
                 children: [
                   image = Image(
-                    image: AssetImage('assets/$brand.jpg'),
+                    image: AssetImage('assets/$brand.png'),
                     width: 315,
                     height: 110,
                   ),
