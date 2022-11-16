@@ -1,7 +1,7 @@
 import 'package:car_app/utils/user_secure_storage.dart';
 import 'package:flutter/material.dart';
-import 'navigation.dart';
 import '../utils/capitalize.dart';
+import 'navigation.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -48,7 +48,7 @@ class MyCustomFormState extends State<MyCustomForm> {
   final _formKey = GlobalKey<FormState>();
   var user = '';
 
-//  om de gebruikersnaam in de localstorage
+//  to save username in localstorage
   void save() async {
     await UsersecureStorage.setUserName(nameController.text.capitalize());
   }
@@ -96,6 +96,7 @@ class MyCustomFormState extends State<MyCustomForm> {
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: ElevatedButton(
               onPressed: () {
+                // to save the username
                 save();
                 // Validate returns true if the form is valid, or false otherwise.
                 if (_formKey.currentState!.validate()) {

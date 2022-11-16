@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../apis/car_api.dart';
 import '../models/rating.dart';
 import 'navigation.dart';
+import '../utils/capitalize.dart';
 
 class RatingPage extends StatefulWidget {
   final String carBrand;
@@ -58,20 +59,18 @@ class _RatingPageState extends State<RatingPage> {
                 width: 315,
                 height: 110,
               ),
-              Text(rating!.carBrand),
-              Text(rating!.userScores[0].userName),
-              Text(rating!.userScores[0].scoreNumber.toString()),
+              Text(rating!.carBrand.capitalize()),
               SizedBox(
                 height: 40.0,
                 width: 250.0,
                 child: Divider(
-                  color: Colors.blue.shade500,
+                  color: Colors.lightGreen.shade500,
                 ),
               ),
               const Text(
                 'Use the slider to set new rating value',
                 style: TextStyle(
-                    color: Colors.blue,
+                    color: Colors.lightGreen,
                     fontSize: 15.0,
                     fontWeight: FontWeight.w900),
               ),
@@ -87,7 +86,7 @@ class _RatingPageState extends State<RatingPage> {
               Text(
                 score.toString(),
                 style: const TextStyle(
-                    color: Colors.blue,
+                    color: Colors.lightGreen,
                     fontSize: 25.0,
                     fontWeight: FontWeight.w900),
               ),
@@ -97,7 +96,7 @@ class _RatingPageState extends State<RatingPage> {
                 height: 100.0,
                 width: 250.0,
                 child: Divider(
-                  color: Colors.blue.shade500,
+                  color: Colors.lightGreen.shade500,
                 ),
               ),
               ElevatedButton(

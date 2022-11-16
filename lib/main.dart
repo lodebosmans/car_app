@@ -20,7 +20,7 @@ class MyAppState extends State {
       debugShowCheckedModeBanner: false,
       title: 'Car App',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.lightGreen,
       ),
       home: const LoginPage(),
     );

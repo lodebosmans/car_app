@@ -7,7 +7,7 @@ import '../models/car.dart';
 import '../models/rating.dart';
 
 class CarApi {
-  static String server = 'apt-edge-service-lodebosmans.cloud.okteto.net';
+  static String server = 'apt-edge-service-johnny-urkens.cloud.okteto.net';
 
 // Ophalen van alle wagens
   static Future<List<Car>> fetchCars() async {
@@ -79,7 +79,8 @@ class CarApi {
     }
   }
 
-  static Future<http.Response> deleteCar(String carBrand, String userName) async {
+  static Future<http.Response> deleteCar(
+      String carBrand, String userName) async {
     var url = Uri.https(server, 'statistics/$userName/car/$carBrand');
     final http.Response response = await http.delete(
       url,
