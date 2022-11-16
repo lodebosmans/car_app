@@ -78,4 +78,15 @@ class CarApi {
       throw Exception('Failed to update rating');
     }
   }
+
+  static Future<http.Response> deleteCar(String carBrand, String userName) async {
+    var url = Uri.https(server, 'statistics/$userName/car/$carBrand');
+    final http.Response response = await http.delete(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+    return response;
+  }
 }

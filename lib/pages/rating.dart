@@ -92,7 +92,20 @@ class _RatingPageState extends State<RatingPage> {
                     fontWeight: FontWeight.w900),
               ),
               ElevatedButton(
-                  onPressed: _updateRating, child: const Text('Update rating'))
+                  onPressed: _updateRating, child: const Text('Update rating')),
+              SizedBox(
+                height: 100.0,
+                width: 250.0,
+                child: Divider(
+                  color: Colors.blue.shade500,
+                ),
+              ),
+              ElevatedButton(
+                  onPressed: _deleteCar,
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.red),
+                  ),
+                  child: const Text('Delete this car')),
             ],
           ),
         ),
@@ -102,6 +115,18 @@ class _RatingPageState extends State<RatingPage> {
 
   void _updateRating() {
     CarApi.updateRating(rating!.userScores[0].userName, rating!.carBrand, score)
+        .then((result) {
+      Navigator.pop(context, true);
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const NavigationPage(),
+          ));
+    });
+  }
+
+  void _deleteCar() {
+    CarApi.deleteCar(rating!.carBrand, rating!.userScores[0].userName)
         .then((result) {
       Navigator.pop(context, true);
       Navigator.push(
